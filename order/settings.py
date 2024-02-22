@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'customers.apps.CustomersConfig',
     'orders.apps.OrdersConfig',
     'rest_framework',
+    'oauth2_provider',
+
 ]
 
 # Configure Django REST framework
@@ -61,7 +63,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
+
 ]
+
+OAUTH2_PROVIDER = {
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 3600,  
+    'REFRESH_TOKEN_EXPIRE_SECONDS': 2592000,  
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'},
+    'ALLOWED_REDIRECT_URI_SCHEMES': ['http', 'https', 'custom-scheme'],
+    'ERROR_RESPONSE_WITH_SCOPES': True,
+}
 
 ROOT_URLCONF = 'order.urls'
 
