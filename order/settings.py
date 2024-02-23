@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'customers.apps.CustomersConfig',
+    'authentication.apps.AuthenticationConfig',
     'orders.apps.OrdersConfig',
     'rest_framework',
     'oauth2_provider',
@@ -74,6 +75,9 @@ OAUTH2_PROVIDER = {
     'ALLOWED_REDIRECT_URI_SCHEMES': ['http', 'https', 'custom-scheme'],
     'ERROR_RESPONSE_WITH_SCOPES': True,
 }
+
+
+AUTH_USER_MODEL = 'authentication.CustomUser'
 
 ROOT_URLCONF = 'order.urls'
 
